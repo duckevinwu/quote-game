@@ -13,7 +13,7 @@ const server = http.createServer((req, res) => {
   } else {
     const pathRoot = req.url.split('/')[1];
     if (pathRoot === 'quote') {
-      quote.handleQuote(req, res);
+      quote.handleQuoteRoute(req, res);
     } else {
       res.statusCode = 404;
       res.end();
