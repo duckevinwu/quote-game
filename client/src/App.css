@@ -1,6 +1,75 @@
 .game-container {
   min-height: 100vh;
+  padding: 0 2rem 0 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.quote {
+  font-size: 32px;
+}
+
+.controls-container {
+  display: flex;
+  padding: 1rem 0 1rem 0;
+}
+
+.control {
+  padding: 1.5rem 2rem 1.5rem 2rem;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  background-color: white;
+  color: black;
+  transition: background-color 0.5s, color 0.25s;
+}
+
+.control:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.right {
+  margin-left: auto;
+}
+
+.selected {
+  background-color: black;
+  color: white;
+}
+
+.current-score-container {
+  display: flex;
+  align-items: flex-end;
+}
+
+.current-score-label {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: gray;
+  margin-right: 5px;
+}
+
+.feedback {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 0px;
+  transition: all 1s;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.revealed {
+  height: 200px;
+  opacity: 1;
+}
+
+.emoji {
+  font-size: 32px;
+  font-family: 'Segoe UI Emoji';
 }
