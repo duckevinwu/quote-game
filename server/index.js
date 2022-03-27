@@ -6,6 +6,10 @@ const quote = require('./components/quote/quote.route.js');
 const port = 8080;
 
 const server = http.createServer((req, res) => {
+  // set headers for cors
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
+
   if (req.url === '/') {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
