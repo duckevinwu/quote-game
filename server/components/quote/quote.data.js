@@ -2,13 +2,13 @@ const axios = require('axios');
 
 const generateRandomQuote = (callback) => {
   axios
-    .get('https://quote-garden.herokuapp.com/api/v3/quotes/random')
+    .get('https://api.quotable.io/random')
     .then(res => {
-      if (res.status === 200 && res.data.statusCode === 200) {
+      if (res.status === 200) {
         callback({
           statusCode: 200,
-          quote: res.data.data[0].quoteText,
-          author: res.data.data[0].quoteAuthor
+          quote: res.data.content,
+          author: res.data.author
         });
       } else {
         callback({statusCode: 500});
@@ -21,12 +21,16 @@ const generateRandomQuote = (callback) => {
 
 const getAuthors = (callback) => {
   axios
-    .get('https://quote-garden.herokuapp.com/api/v3/authors')
+    .get('https://quotable.io/authors?limit=150')
     .then(res => {
-      if (res.status === 200 && res.data.statusCode === 200) {
+      if (res.status === 200) {
+        const authorInfo = res.data.results;
+        const authorList = authorInfo.map((authorObj) => {
+          return authorObj.name;
+        });
         callback({
           statusCode: 200,
-          authors: res.data.data
+          authors: authorList
         });
       } else {
         callback({statusCode: 500});
